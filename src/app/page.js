@@ -4,14 +4,29 @@ import styles from './page.module.css'
 import { sql } from '@vercel/postgres';
 import { NextResponse } from 'next/server';
  
-export async function GET(request) {
+export async function TABLE(request) {
   try {
     const result =
-      await sql`CREATE TABLE Pets ( Name varchar(255), Age int );`;
+      await sql`CREATE TABLE table ( Name varchar(255), Age int );`;
     return NextResponse.json({ result }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
   }
+}
+export async function GET(request) {
+  const { searchParams } = new URL(request.url);
+  const name = searchParams.get('Name');
+  const age = searchParams.get('Age');
+ 
+  try {
+    if (!Name || !Age) throw new Error('Name and age required');
+    await sql`INSERT INTO table (Name, Age) VALUES (${name}, ${age});`;
+  } catch (error) {
+    return NextResponse.json({ error }, { status: 500 });
+  }
+ 
+  const table = await sql`SELECT * FROM table;`;
+  return NextResponse.json({ table }, { status: 200 });
 }
 export default function Home() {
   
@@ -32,7 +47,7 @@ export default function Home() {
           <label for="age">Age:</label>
           <input type="number" id="age" name="age" required></input><br></br>
       
-          <button type="submit" onclick="">Add Data</button>
+          <button type="submit" onclick="TABLE()">Add Data</button>
         </form>
       
         <script src="script.js"></script>
