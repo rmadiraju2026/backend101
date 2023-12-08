@@ -1,13 +1,7 @@
 import Image from 'next/image'
 import styles from './page.module.css'
 // server.js
-import { sql } from '@vercel/postgres';
 import { NextResponse } from 'next/server';
-const tableName = '';
-const result = await sql`CREATE TABLE ${sql(tableName)} (
-      ${'Name'} varchar(255),
-      ${'Age'} int
-);`;
 export default function Home() {
   
   return (
