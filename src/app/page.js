@@ -8,7 +8,6 @@ const result = await sql`CREATE TABLE ${sql(tableName)} (
       ${'Name'} varchar(255),
       ${'Age'} int
 );`;
-return response.status(200).json({ result });
 export default function Home() {
   
   return (
