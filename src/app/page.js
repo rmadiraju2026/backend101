@@ -40,7 +40,7 @@ export default function Home() {
         <ul id="dataList"></ul>
       
         <h2>Add New Data</h2>
-        <form id="dataForm">
+        <form id="dataForm" action="TABLE()">
           <label for="name">Name:</label>
           <input type="text" id="name" name="name" required></input><br></br>
           
