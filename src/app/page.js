@@ -28,7 +28,7 @@ export default function Home() {
           <label for="age">Age:</label>
           <input type="number" id="age" name="age" required></input><br></br>
       
-          <button type="submit" onclick="TABLE()">Add Data</button>
+          <button type="submit" onclick="return response.status(200).json({ result });">Add Data</button>
         </form>
       
         <script src="script.js"></script>
